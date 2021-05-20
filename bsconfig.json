@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/BuckleScript/bucklescript/master/docs/docson/build-schema.json",
   "name": "reason-nodejs",
   "sources": [
     {
@@ -20,7 +19,7 @@
   "package-specs": [
     {
       "module": "commonjs",
-      "in-source": false
+      "in-source": true
     }
   ],
   "suffix": ".bs.js",
@@ -30,6 +29,5 @@
     "@glennsl/bs-jest"
   ],
   "ppx-flags": [],
-  "refmt": 3,
   "bsc-flags": []
 }

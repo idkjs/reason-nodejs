@@ -7,18 +7,16 @@
     "start": "bsb -make-world -w",
     "clean-start": "bsb -clean-world && bsb -make-world -w",
     "test": "jest",
+    "postinstall": "esy",
     "clean-test": "bsb -clean-world && bsb -make-world && jest",
     "clean": "bsb -clean-world"
   },
-  "keywords": [
-    "BuckleScript"
-  ],
+  "keywords": [ "BuckleScript" ],
   "author": "Sikan He & Austin Davis",
   "homepage": "https://github.com/sikanhe/reason-node",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@glennsl/bs-jest": "^0.4.10",
-    "bs-platform": "^8.3.0"
+    "@glennsl/bs-jest": "^0.7.0"
   }
 }

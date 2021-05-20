@@ -1,0 +1,667 @@
+;;;;{BSB GENERATED: NO EDIT
+(subdir ./node_modules/@glennsl/bs-jest/src
+(rule
+(targets  jest.ast)
+ (deps (:inputs  jest.ml) )
+(action
+ (run bsc  -w a -bs-no-version-header -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.iast)
+ (deps (:inputs  jest.mli) )
+(action
+ (run bsc  -w a -bs-no-version-header -bs-super-errors -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.cmi jest.cmti)
+ (deps (:inputs  jest.iast)  (:ast_deps .././src/jest.ast .././src/jest.iast) ../bsconfig.json)
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/reason-nodejs/node_modules/@glennsl/bs-jest -cwd ./src %{ast_deps}) (run bsc -I .    -w a -o jest.cmi %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  jest.cmj jest.cmt jest.bs.js)
+ (mode (promote (until-clean) (only jest.bs.js)))(deps (:inputs  jest.ast)  jest.cmi (:ast_deps .././src/jest.ast .././src/jest.iast) ../bsconfig.json)
+(action
+ (progn (dynamic-run bsb_helper -root /Users/mando/Github/reason-nodejs/node_modules/@glennsl/bs-jest -cwd ./src %{ast_deps}) (run bsc -bs-read-cmi -I .    -w a -bs-package-name @glennsl/bs-jest -bs-package-output commonjs:./src:.bs.js -o jest.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  jest.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+
+
+(subdir ./node_modules/@glennsl/bs-jest(data_only_dirs .melange.eobjs))
+(subdir ./node_modules/@glennsl/bs-jest/.melange.eobjs)
+
+(subdir ./examples
+(rule
+(targets  StreamTextToFile.ast)
+ (deps (:inputs  StreamTextToFile.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StreamTextToFile-NodeJs.cmj StreamTextToFile-NodeJs.cmi StreamTextToFile-NodeJs.cmt StreamTextToFile.bs.js)
+ (mode (promote (until-clean) (only StreamTextToFile.bs.js)))(deps (:inputs  StreamTextToFile.ast)  (:ast_deps .././examples/StreamTextToFile.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi(alias ../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./examples %{ast_deps}) (run bsc -bs-ns NodeJs -I ../test/tests -I ../test/test_lib -I ../test -I . -bs-re-out -I ../src/internal -I ../src -I ../.melange.eobjs  -I ../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./examples:.bs.js -o StreamTextToFile-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  StreamTextToFile.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+(subdir ./test/test_lib
+(rule
+(targets  StreamTestLib.ast)
+ (deps (:inputs  StreamTestLib.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StreamTestLib-NodeJs.cmj StreamTestLib-NodeJs.cmi StreamTestLib-NodeJs.cmt StreamTestLib.bs.js)
+ (mode (promote (until-clean) (only StreamTestLib.bs.js)))(deps (:inputs  StreamTestLib.ast)  (:ast_deps ../.././test/test_lib/StreamTestLib.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/test_lib %{ast_deps}) (run bsc -bs-ns NodeJs -I ../tests -I . -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/test_lib:.bs.js -o StreamTestLib-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitterTestLib.ast)
+ (deps (:inputs  EventEmitterTestLib.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitterTestLib-NodeJs.cmj EventEmitterTestLib-NodeJs.cmi EventEmitterTestLib-NodeJs.cmt EventEmitterTestLib.bs.js)
+ (mode (promote (until-clean) (only EventEmitterTestLib.bs.js)))(deps (:inputs  EventEmitterTestLib.ast)  (:ast_deps ../.././test/test_lib/EventEmitterTestLib.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/test_lib %{ast_deps}) (run bsc -bs-ns NodeJs -I ../tests -I . -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/test_lib:.bs.js -o EventEmitterTestLib-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  EventEmitterTestLib.bs.js StreamTestLib.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+(subdir ./test/tests
+(rule
+(targets  Fs_test.ast)
+ (deps (:inputs  Fs_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Fs_test-NodeJs.cmj Fs_test-NodeJs.cmi Fs_test-NodeJs.cmt Fs_test.bs.js)
+ (mode (promote (until-clean) (only Fs_test.bs.js)))(deps (:inputs  Fs_test.ast)  (:ast_deps ../.././test/tests/Fs_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Fs_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Path_test.ast)
+ (deps (:inputs  Path_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Path_test-NodeJs.cmj Path_test-NodeJs.cmi Path_test-NodeJs.cmt Path_test.bs.js)
+ (mode (promote (until-clean) (only Path_test.bs.js)))(deps (:inputs  Path_test.ast)  (:ast_deps ../.././test/tests/Path_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Path_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Util_test.ast)
+ (deps (:inputs  Util_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Util_test-NodeJs.cmj Util_test-NodeJs.cmi Util_test-NodeJs.cmt Util_test.bs.js)
+ (mode (promote (until-clean) (only Util_test.bs.js)))(deps (:inputs  Util_test.ast)  (:ast_deps ../.././test/tests/Util_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Util_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BigInt_test.ast)
+ (deps (:inputs  BigInt_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BigInt_test-NodeJs.cmj BigInt_test-NodeJs.cmi BigInt_test-NodeJs.cmt BigInt_test.bs.js)
+ (mode (promote (until-clean) (only BigInt_test.bs.js)))(deps (:inputs  BigInt_test.ast)  (:ast_deps ../.././test/tests/BigInt_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o BigInt_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Global_test.ast)
+ (deps (:inputs  Global_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Global_test-NodeJs.cmj Global_test-NodeJs.cmi Global_test-NodeJs.cmt Global_test.bs.js)
+ (mode (promote (until-clean) (only Global_test.bs.js)))(deps (:inputs  Global_test.ast)  (:ast_deps ../.././test/tests/Global_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Global_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Stream_test.ast)
+ (deps (:inputs  Stream_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Stream_test-NodeJs.cmj Stream_test-NodeJs.cmi Stream_test-NodeJs.cmt Stream_test.bs.js)
+ (mode (promote (until-clean) (only Stream_test.bs.js)))(deps (:inputs  Stream_test.ast)  (:ast_deps ../.././test/tests/Stream_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Stream_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Console_test.ast)
+ (deps (:inputs  Console_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Console_test-NodeJs.cmj Console_test-NodeJs.cmi Console_test-NodeJs.cmt Console_test.bs.js)
+ (mode (promote (until-clean) (only Console_test.bs.js)))(deps (:inputs  Console_test.ast)  (:ast_deps ../.././test/tests/Console_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o Console_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BinaryLike_test.ast)
+ (deps (:inputs  BinaryLike_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BinaryLike_test-NodeJs.cmj BinaryLike_test-NodeJs.cmi BinaryLike_test-NodeJs.cmt BinaryLike_test.bs.js)
+ (mode (promote (until-clean) (only BinaryLike_test.bs.js)))(deps (:inputs  BinaryLike_test.ast)  (:ast_deps ../.././test/tests/BinaryLike_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o BinaryLike_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitter_test.ast)
+ (deps (:inputs  EventEmitter_test.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitter_test-NodeJs.cmj EventEmitter_test-NodeJs.cmi EventEmitter_test-NodeJs.cmt EventEmitter_test.bs.js)
+ (mode (promote (until-clean) (only EventEmitter_test.bs.js)))(deps (:inputs  EventEmitter_test.ast)  (:ast_deps ../.././test/tests/EventEmitter_test.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi(alias ../../node_modules/@glennsl/bs-jest/src/bsb_world))
+(action
+ (progn (dynamic-run bsb_helper -g -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./test/tests %{ast_deps}) (run bsc -bs-ns NodeJs -I . -I ../test_lib -I .. -I ../../examples -bs-re-out -I ../../src/internal -I ../../src -I ../../.melange.eobjs  -I ../../node_modules/@glennsl/bs-jest/src  -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./test/tests:.bs.js -o EventEmitter_test-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  EventEmitter_test.bs.js BinaryLike_test.bs.js Console_test.bs.js Stream_test.bs.js Global_test.bs.js BigInt_test.bs.js Util_test.bs.js Path_test.bs.js Fs_test.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+(subdir ./src
+(dirs :standard internal)
+(rule
+(targets  Fs.ast)
+ (deps (:inputs  Fs.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Fs-NodeJs.cmj Fs-NodeJs.cmi Fs-NodeJs.cmt Fs.bs.js)
+ (mode (promote (until-clean) (only Fs.bs.js)))(deps (:inputs  Fs.ast)  (:ast_deps .././src/Fs.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Fs-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Os.ast)
+ (deps (:inputs  Os.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Os-NodeJs.cmj Os-NodeJs.cmi Os-NodeJs.cmt Os.bs.js)
+ (mode (promote (until-clean) (only Os.bs.js)))(deps (:inputs  Os.ast)  (:ast_deps .././src/Os.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Os-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  V8.ast)
+ (deps (:inputs  V8.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  V8-NodeJs.cmj V8-NodeJs.cmi V8-NodeJs.cmt V8.bs.js)
+ (mode (promote (until-clean) (only V8.bs.js)))(deps (:inputs  V8.ast)  (:ast_deps .././src/V8.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o V8-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  VM.ast)
+ (deps (:inputs  VM.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  VM-NodeJs.cmj VM-NodeJs.cmi VM-NodeJs.cmt VM.bs.js)
+ (mode (promote (until-clean) (only VM.bs.js)))(deps (:inputs  VM.ast)  (:ast_deps .././src/VM.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o VM-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Dns.ast)
+ (deps (:inputs  Dns.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Dns-NodeJs.cmj Dns-NodeJs.cmi Dns-NodeJs.cmt Dns.bs.js)
+ (mode (promote (until-clean) (only Dns.bs.js)))(deps (:inputs  Dns.ast)  (:ast_deps .././src/Dns.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Dns-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Net.ast)
+ (deps (:inputs  Net.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Net-NodeJs.cmj Net-NodeJs.cmi Net-NodeJs.cmt Net.bs.js)
+ (mode (promote (until-clean) (only Net.bs.js)))(deps (:inputs  Net.ast)  (:ast_deps .././src/Net.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Net-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Tls.ast)
+ (deps (:inputs  Tls.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Tls-NodeJs.cmj Tls-NodeJs.cmi Tls-NodeJs.cmt Tls.bs.js)
+ (mode (promote (until-clean) (only Tls.bs.js)))(deps (:inputs  Tls.ast)  (:ast_deps .././src/Tls.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Tls-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Tty.ast)
+ (deps (:inputs  Tty.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Tty-NodeJs.cmj Tty-NodeJs.cmi Tty-NodeJs.cmt Tty.bs.js)
+ (mode (promote (until-clean) (only Tty.bs.js)))(deps (:inputs  Tty.ast)  (:ast_deps .././src/Tty.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Tty-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Url.ast)
+ (deps (:inputs  Url.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Url-NodeJs.cmj Url-NodeJs.cmi Url-NodeJs.cmt Url.bs.js)
+ (mode (promote (until-clean) (only Url.bs.js)))(deps (:inputs  Url.ast)  (:ast_deps .././src/Url.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Url-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Http.ast)
+ (deps (:inputs  Http.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Http-NodeJs.cmj Http-NodeJs.cmi Http-NodeJs.cmt Http.bs.js)
+ (mode (promote (until-clean) (only Http.bs.js)))(deps (:inputs  Http.ast)  (:ast_deps .././src/Http.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Http-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Path.ast)
+ (deps (:inputs  Path.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Path-NodeJs.cmj Path-NodeJs.cmi Path-NodeJs.cmt Path.bs.js)
+ (mode (promote (until-clean) (only Path.bs.js)))(deps (:inputs  Path.ast)  (:ast_deps .././src/Path.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Path-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Util.ast)
+ (deps (:inputs  Util.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Util-NodeJs.cmj Util-NodeJs.cmi Util-NodeJs.cmt Util.bs.js)
+ (mode (promote (until-clean) (only Util.bs.js)))(deps (:inputs  Util.ast)  (:ast_deps .././src/Util.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Util-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Event.ast)
+ (deps (:inputs  Event.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Event-NodeJs.cmj Event-NodeJs.cmi Event-NodeJs.cmt Event.bs.js)
+ (mode (promote (until-clean) (only Event.bs.js)))(deps (:inputs  Event.ast)  (:ast_deps .././src/Event.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Event-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Http2.ast)
+ (deps (:inputs  Http2.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Http2-NodeJs.cmj Http2-NodeJs.cmi Http2-NodeJs.cmt Http2.bs.js)
+ (mode (promote (until-clean) (only Http2.bs.js)))(deps (:inputs  Http2.ast)  (:ast_deps .././src/Http2.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Http2-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Https.ast)
+ (deps (:inputs  Https.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Https-NodeJs.cmj Https-NodeJs.cmi Https-NodeJs.cmt Https.bs.js)
+ (mode (promote (until-clean) (only Https.bs.js)))(deps (:inputs  Https.ast)  (:ast_deps .././src/Https.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Https-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Assert.ast)
+ (deps (:inputs  Assert.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Assert-NodeJs.cmj Assert-NodeJs.cmi Assert-NodeJs.cmt Assert.bs.js)
+ (mode (promote (until-clean) (only Assert.bs.js)))(deps (:inputs  Assert.ast)  (:ast_deps .././src/Assert.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Assert-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BigInt.ast)
+ (deps (:inputs  BigInt.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BigInt-NodeJs.cmj BigInt-NodeJs.cmi BigInt-NodeJs.cmt BigInt.bs.js)
+ (mode (promote (until-clean) (only BigInt.bs.js)))(deps (:inputs  BigInt.ast)  (:ast_deps .././src/BigInt.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o BigInt-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Buffer.ast)
+ (deps (:inputs  Buffer.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Buffer-NodeJs.cmj Buffer-NodeJs.cmi Buffer-NodeJs.cmt Buffer.bs.js)
+ (mode (promote (until-clean) (only Buffer.bs.js)))(deps (:inputs  Buffer.ast)  (:ast_deps .././src/Buffer.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Buffer-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Crypto.ast)
+ (deps (:inputs  Crypto.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Crypto-NodeJs.cmj Crypto-NodeJs.cmi Crypto-NodeJs.cmt Crypto.bs.js)
+ (mode (promote (until-clean) (only Crypto.bs.js)))(deps (:inputs  Crypto.ast)  (:ast_deps .././src/Crypto.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Crypto-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Errors.ast)
+ (deps (:inputs  Errors.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Errors-NodeJs.cmj Errors-NodeJs.cmi Errors-NodeJs.cmt Errors.bs.js)
+ (mode (promote (until-clean) (only Errors.bs.js)))(deps (:inputs  Errors.ast)  (:ast_deps .././src/Errors.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Errors-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Global.ast)
+ (deps (:inputs  Global.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Global-NodeJs.cmj Global-NodeJs.cmi Global-NodeJs.cmt Global.bs.js)
+ (mode (promote (until-clean) (only Global.bs.js)))(deps (:inputs  Global.ast)  (:ast_deps .././src/Global.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Global-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Module.ast)
+ (deps (:inputs  Module.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Module-NodeJs.cmj Module-NodeJs.cmi Module-NodeJs.cmt Module.bs.js)
+ (mode (promote (until-clean) (only Module.bs.js)))(deps (:inputs  Module.ast)  (:ast_deps .././src/Module.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Module-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Stream.ast)
+ (deps (:inputs  Stream.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Stream-NodeJs.cmj Stream-NodeJs.cmi Stream-NodeJs.cmt Stream.bs.js)
+ (mode (promote (until-clean) (only Stream.bs.js)))(deps (:inputs  Stream.ast)  (:ast_deps .././src/Stream.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Stream-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Timers.ast)
+ (deps (:inputs  Timers.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Timers-NodeJs.cmj Timers-NodeJs.cmi Timers-NodeJs.cmt Timers.bs.js)
+ (mode (promote (until-clean) (only Timers.bs.js)))(deps (:inputs  Timers.ast)  (:ast_deps .././src/Timers.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Timers-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Cluster.ast)
+ (deps (:inputs  Cluster.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Cluster-NodeJs.cmj Cluster-NodeJs.cmi Cluster-NodeJs.cmt Cluster.bs.js)
+ (mode (promote (until-clean) (only Cluster.bs.js)))(deps (:inputs  Cluster.ast)  (:ast_deps .././src/Cluster.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Cluster-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Console.ast)
+ (deps (:inputs  Console.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Console-NodeJs.cmj Console-NodeJs.cmi Console-NodeJs.cmt Console.bs.js)
+ (mode (promote (until-clean) (only Console.bs.js)))(deps (:inputs  Console.ast)  (:ast_deps .././src/Console.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Console-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Process.ast)
+ (deps (:inputs  Process.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Process-NodeJs.cmj Process-NodeJs.cmi Process-NodeJs.cmt Process.bs.js)
+ (mode (promote (until-clean) (only Process.bs.js)))(deps (:inputs  Process.ast)  (:ast_deps .././src/Process.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Process-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Readline.ast)
+ (deps (:inputs  Readline.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Readline-NodeJs.cmj Readline-NodeJs.cmi Readline-NodeJs.cmt Readline.bs.js)
+ (mode (promote (until-clean) (only Readline.bs.js)))(deps (:inputs  Readline.ast)  (:ast_deps .././src/Readline.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o Readline-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  PerfHooks.ast)
+ (deps (:inputs  PerfHooks.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  PerfHooks-NodeJs.cmj PerfHooks-NodeJs.cmi PerfHooks-NodeJs.cmt PerfHooks.bs.js)
+ (mode (promote (until-clean) (only PerfHooks.bs.js)))(deps (:inputs  PerfHooks.ast)  (:ast_deps .././src/PerfHooks.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o PerfHooks-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BinaryLike.ast)
+ (deps (:inputs  BinaryLike.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  BinaryLike-NodeJs.cmj BinaryLike-NodeJs.cmi BinaryLike-NodeJs.cmt BinaryLike.bs.js)
+ (mode (promote (until-clean) (only BinaryLike.bs.js)))(deps (:inputs  BinaryLike.ast)  (:ast_deps .././src/BinaryLike.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o BinaryLike-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  QueryString.ast)
+ (deps (:inputs  QueryString.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  QueryString-NodeJs.cmj QueryString-NodeJs.cmi QueryString-NodeJs.cmt QueryString.bs.js)
+ (mode (promote (until-clean) (only QueryString.bs.js)))(deps (:inputs  QueryString.ast)  (:ast_deps .././src/QueryString.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o QueryString-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  ChildProcess.ast)
+ (deps (:inputs  ChildProcess.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  ChildProcess-NodeJs.cmj ChildProcess-NodeJs.cmi ChildProcess-NodeJs.cmt ChildProcess.bs.js)
+ (mode (promote (until-clean) (only ChildProcess.bs.js)))(deps (:inputs  ChildProcess.ast)  (:ast_deps .././src/ChildProcess.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o ChildProcess-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitter.ast)
+ (deps (:inputs  EventEmitter.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  EventEmitter-NodeJs.cmj EventEmitter-NodeJs.cmi EventEmitter-NodeJs.cmt EventEmitter.bs.js)
+ (mode (promote (until-clean) (only EventEmitter.bs.js)))(deps (:inputs  EventEmitter.ast)  (:ast_deps .././src/EventEmitter.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o EventEmitter-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringBuffer.ast)
+ (deps (:inputs  StringBuffer.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringBuffer-NodeJs.cmj StringBuffer-NodeJs.cmi StringBuffer-NodeJs.cmt StringBuffer.bs.js)
+ (mode (promote (until-clean) (only StringBuffer.bs.js)))(deps (:inputs  StringBuffer.ast)  (:ast_deps .././src/StringBuffer.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o StringBuffer-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringDecoder.ast)
+ (deps (:inputs  StringDecoder.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringDecoder-NodeJs.cmj StringDecoder-NodeJs.cmi StringDecoder-NodeJs.cmt StringDecoder.bs.js)
+ (mode (promote (until-clean) (only StringDecoder.bs.js)))(deps (:inputs  StringDecoder.ast)  (:ast_deps .././src/StringDecoder.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o StringDecoder-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  WorkerThreads.ast)
+ (deps (:inputs  WorkerThreads.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  WorkerThreads-NodeJs.cmj WorkerThreads-NodeJs.cmi WorkerThreads-NodeJs.cmt WorkerThreads.bs.js)
+ (mode (promote (until-clean) (only WorkerThreads.bs.js)))(deps (:inputs  WorkerThreads.ast)  (:ast_deps .././src/WorkerThreads.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o WorkerThreads-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringEncoding.ast)
+ (deps (:inputs  StringEncoding.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  StringEncoding-NodeJs.cmj StringEncoding-NodeJs.cmi StringEncoding-NodeJs.cmt StringEncoding.bs.js)
+ (mode (promote (until-clean) (only StringEncoding.bs.js)))(deps (:inputs  StringEncoding.ast)  (:ast_deps .././src/StringEncoding.ast ) ../bsconfig.json ../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I ./internal -I . -I ../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src:.bs.js -o StringEncoding-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  StringEncoding.bs.js WorkerThreads.bs.js StringDecoder.bs.js StringBuffer.bs.js EventEmitter.bs.js ChildProcess.bs.js QueryString.bs.js BinaryLike.bs.js PerfHooks.bs.js Readline.bs.js Process.bs.js Console.bs.js Cluster.bs.js Timers.bs.js Stream.bs.js Module.bs.js Global.bs.js Errors.bs.js Crypto.bs.js Buffer.bs.js BigInt.bs.js Assert.bs.js Https.bs.js Http2.bs.js Event.bs.js Util.bs.js Path.bs.js Http.bs.js Url.bs.js Tty.bs.js Tls.bs.js Net.bs.js Dns.bs.js VM.bs.js V8.bs.js Os.bs.js Fs.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+(subdir ./src/internal
+(rule
+(targets  Internal__JsTypeReflection.ast)
+ (deps (:inputs  Internal__JsTypeReflection.re) )
+(action
+ (run bsc  -w a  -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ (rule
+(targets  Internal__JsTypeReflection-NodeJs.cmj Internal__JsTypeReflection-NodeJs.cmi Internal__JsTypeReflection-NodeJs.cmt Internal__JsTypeReflection.bs.js)
+ (mode (promote (until-clean) (only Internal__JsTypeReflection.bs.js)))(deps (:inputs  Internal__JsTypeReflection.ast)  (:ast_deps ../.././src/internal/Internal__JsTypeReflection.ast ) ../../bsconfig.json ../../.melange.eobjs/NodeJs.cmi)
+(action
+ (progn (dynamic-run bsb_helper -bs-ns NodeJs -root /Users/mando/Github/reason-nodejs -cwd ./src/internal %{ast_deps}) (run bsc -bs-ns NodeJs -bs-re-out -I . -I .. -I ../../.melange.eobjs   -w a -bs-package-name reason-nodejs -bs-package-output commonjs:./src/internal:.bs.js -o Internal__JsTypeReflection-NodeJs.cmj %{inputs})))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ 
+(alias (name bsb_world)(deps  Internal__JsTypeReflection.bs.js)
+(enabled_if (= %{ocaml_version} "4.12.0"))))
+
+(subdir ./.melange.eobjs(rule
+(targets  NodeJs.cmi)
+ (deps (:inputs  NodeJs.mlmap) )
+(action (run bsc -w -49 -color always -no-alias-deps %{inputs}))
+(enabled_if (= %{ocaml_version} "4.12.0")) )
+ )
+(subdir .melange.eobjs)
+
+(data_only_dirs node_modules .melange.eobjs)
+(alias (name bsb_world))
+;;;;BSB GENERATED: NO EDIT}

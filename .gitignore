@@ -10,3 +10,6 @@ package-lock.json
 
 src/ScratchRe.re
 src/ScratchMl.ml
+.melange.eobjs
+_build
+_esy
